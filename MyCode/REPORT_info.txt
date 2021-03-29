@@ -1,0 +1,37 @@
+
+
+Two Methods implemented
+
+1) Gradient based Approach
+2) Intersection based Approach
+
+Gradient based Approach
+- Convert images to grayscale.
+- Take the Sobel gradient in both x and y direction of all the background images.
+- Take median of the gradient images along axis = 0 in both direction separately.
+- Combine both the gradient images in x and y direction to get the extracted watermark.
+- Find all the bounding box from the extracted watermark and ignore small bounding box (i.e. having height and width less than 30).
+- Store the minimum and maximum coordinates from all the bounding box and make a bigger bounding box which is the probable location of the watermark.
+
+
+Intersection based Approach
+- Convert images to grayscale.
+- Take the intersction such that if at a particular location in all the images if any of the pixel value is 255 then store 0 at that location else store 255.
+- Find all the bounding box from the extracted watermark and ignore small bounding box (i.e. having height and width less than 30).
+- Store the minimum and maximum coordinates from all the bounding box and make a bigger bounding box which is the probable location of the watermark.
+
+
+
+Modified Gradient based Approach
+- Convert images to grayscale.
+- Take the Sobel gradient in both x and y direction of all the background images.
+- Instead of taking median along axis = 0, we form seperate edge detected image of all the images using gradient images in both x and y direction.
+- Take the intersection of all the edge detected images.
+- Find all the bounding box from the extracted watermark and ignore small bounding box (i.e. having height and width less than 30).
+- Store the minimum and maximum coordinates from all the bounding box and make a bigger bounding box which is the probable location of the watermark.
+
+
+Removing watermark
+
+- Dilate the bounding box of the watermark region.
+- Replace the watermark by taking the extracted image as reference and by checking the 
